@@ -16,17 +16,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-@Table(name = "cateories")
 public class Category {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "category_id")
-	private Integer category;
+	
+	private int id;
+	
 	@Column(name = "category_title")
 	private String categoryTitle;
+	
 	@Column(name = "category_description")
 	private String categoryDescription;
-	
 
 }
