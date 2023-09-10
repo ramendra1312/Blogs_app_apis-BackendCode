@@ -61,13 +61,10 @@ public class CategoryController {
 	// getting all category
 
 	@GetMapping("/all")
-	public ResponseEntity<List<CategoryDto>> allCategory(){
+	public ResponseEntity<List<CategoryDto>> allCategory() {
 		List<CategoryDto> gettingAllCategory = this.categoyServices.GettingAllCategory();
 		return ResponseEntity.ok(gettingAllCategory);
-		
-		
-		
-		
+
 	}
 
 	//

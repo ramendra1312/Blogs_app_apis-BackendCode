@@ -69,6 +69,7 @@ public class CategorySevicesImp implements CategoryServices {
 		return category;
 
 	}
+
 	public CategoryDto categorydto(Category category) {
 		CategoryDto categorydto = this.modelMapper.map(category, CategoryDto.class);
 		return categorydto;
