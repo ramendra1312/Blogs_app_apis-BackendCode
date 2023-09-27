@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.turbo.blog.entities.Category;
 import com.turbo.blog.exceptions.ResourcesNotFoundException;
@@ -12,10 +13,12 @@ import com.turbo.blog.payloads.CategoryDto;
 import com.turbo.blog.repositories.CategoryRepo;
 import com.turbo.blog.services.CategoryServices;
 
+@Service
 public class CategorySevicesImp implements CategoryServices {
 
 	@Autowired
 	private CategoryRepo categoryRepo;
+
 	@Autowired
 	private ModelMapper modelMapper;
 
@@ -54,11 +57,22 @@ public class CategorySevicesImp implements CategoryServices {
 
 	@Override
 	public List<CategoryDto> GettingAllCategory() {
-		
+
 		List<Category> findAll = this.categoryRepo.findAll();
 		List<CategoryDto> allcat = findAll.stream().map((cat) -> this.modelMapper.map(cat, CategoryDto.class))
 				.collect(Collectors.toList());
 		return allcat;
+	}
+
+	public Category dtoCategory(CategoryDto categoryDto) {
+		Category category = this.modelMapper.map(categoryDto, Category.class);
+		return category;
+
+	}
+
+	public CategoryDto categorydto(Category category) {
+		CategoryDto categorydto = this.modelMapper.map(category, CategoryDto.class);
+		return categorydto;
 	}
 
 }
